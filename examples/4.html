@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Example 4</title>
+    </head>
+    <body>
+        <p>
+            Example using to queues that wait
+        </p>
+        <script type="text/javascript" src="../src/async.js"></script>
+        <script type="text/javascript">
+            var counter = 0;
+
+            async([
+                function() {
+                    ++counter;      // counter = 1
+                },
+                function() {
+                    counter *= 10;  // counter = 10
+                },
+                function() {
+                    counter -= 1;   // counter = 9
+                },
+                function() {
+                    console.log(counter);
+                }
+            ]);
+
+            async([
+                function() {
+                    counter *= 2;   // counter = 18
+                },
+                function() {
+                    console.log(counter);
+                }
+            ]);
+
+            // Result:
+            // counter = 18
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Example 4</title>
+    </head>
+    <body>
+        <p>
+            See Example 4, now one of the queues don't wait
+        </p>
+        <script type="text/javascript" src="../src/async.js"></script>
+        <script type="text/javascript">
+            var counter = 0;
+
+            async([
+                function() {
+                    ++counter;
+                    console.log('Queue 1, Function 1');
+                },
+                function() {
+                    counter *= 10;
+                    console.log('Queue 1, Function 2');
+                },
+                function() {
+                    counter -= 1;
+                    console.log('Queue 1, Function 3');
+                },
+                function() {
+                    console.log(counter);
+                }
+            ], true);
+
+            async([
+                function() {
+                    console.log('Queue 2, Function 1');
+                    counter *= 2;   // counter = 18
+                },
+                function() {
+                    console.log(counter);
+                }
+            ]);
+
+            // Result:
+            // Queue 1, Function 1
+            // Queue 2, Function 1
+            // 2
+            // Queue 1, Function 2
+            // Queue 1, Function 3
+            // 19
+        </script>
+    </body>
+</html>
