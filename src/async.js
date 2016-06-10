@@ -25,7 +25,9 @@
                     }, 0);
                 } else {
                     for (var i in fn) {
-                        window.setTimeout(fn[i], 0);
+                        if (typeof fn[i] === 'function') {
+                            window.setTimeout(fn[i], 0);
+                        }
                     }
                 }
             }

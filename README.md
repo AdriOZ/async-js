@@ -101,7 +101,7 @@ async([
 The result is 18
 
 ## Example 5
-Executing two queues. One of the is executed in order:
+Executing two queues. One of them is executed in order:
 ```js
 var counter = 0;
 
